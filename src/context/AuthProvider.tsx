@@ -32,7 +32,15 @@ const AuthProvider = ({ children }: props) => {
       throw notify(error.message, "error");
     }
   };
-
+  const signUp = async (formData: LoginDate) => {
+    const { error } = await client.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+    });
+    if (error) {
+      throw notify(error.message, "error");
+    }
+  };
   const signIn = async (formData: LoginDate) => {
     const { error } = await client.auth.signInWithPassword({
       email: formData.email,
@@ -75,6 +83,7 @@ const AuthProvider = ({ children }: props) => {
         session: user.session,
         signIn,
         signOut,
+        signUp,
         signMagicClick,
         signUpGoogle,
       }}

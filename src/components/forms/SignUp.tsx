@@ -7,11 +7,11 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  const { signIn } = useContext(AuthContext);
+  const { signUp } = useContext(AuthContext);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      signIn(formData);
+      signUp(formData);
     } catch (error) {
       console.error(error, 2);
     }

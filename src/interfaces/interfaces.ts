@@ -17,6 +17,7 @@ export interface AuthUser {
 export interface AuthContextType extends AuthUser {
   signIn: (date: LoginDate) => void;
   signOut: () => void;
+  signUp: (date: LoginDate) => void;
   signMagicClick: (date: Login) => void;
   signUpGoogle: () => void;
 }
