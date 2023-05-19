@@ -3,22 +3,12 @@ import UserContainer from "@/container/UserContainer";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
 const Home = () => {
-  const { signOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h2>Home</h2>
-        <button
-          onClick={signOut}
-          style={{
-            cursor: "pointer",
-            padding: ".75em",
-            borderRadius: "50px",
-            maxWidth: "200px",
-          }}
-        >
-          LogOut
-        </button>
+        <h2 className={styles.h2}>Hello {user?.email}</h2>
       </div>
       <UserContainer />
     </div>

@@ -1,17 +1,17 @@
 import { Doughnut } from "react-chartjs-2";
 import { PieChartProps } from "@/interfaces/interfaces";
 
-function PieChart({ chartData }: PieChartProps) {
+function PieChartGastos({ chartData }: PieChartProps) {
   return (
     <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Accountability</h2>
+      <h2 style={{ textAlign: "center" }}>Gastos</h2>
       <Doughnut
         data={chartData}
         options={{
           plugins: {
             title: {
               display: true,
-              text: "Accountability user",
+              text: "Gastos user",
             },
             subtitle: {
               display: true,
@@ -23,4 +23,4 @@ function PieChart({ chartData }: PieChartProps) {
     </div>
   );
 }
-export default PieChart;
+export default PieChartGastos;

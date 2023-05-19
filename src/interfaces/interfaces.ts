@@ -35,10 +35,15 @@ export interface UserContextType {
 }
 export type UserContextProps = {
   todo: UserContextType;
-  createData: (todo: BillData) => void;
   loading: boolean;
-  deleteData: (todo: number) => void;
+  createData: (todo: BillData) => void;
+  loadMoney: (todo: LoadMoney) => void;
   changeState: (id: number, paid_up: boolean) => void;
+  deleteData: (todo: number) => void;
+};
+export type LoadMoney = {
+  name: string;
+  amount: number;
 };
 export interface props {
   children: JSX.Element | JSX.Element[];

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import {
   BillData,
+  LoadMoney,
   TabData,
   UserContextType,
   props,
@@ -22,7 +23,7 @@ const UserProvider = ({ children }: props) => {
   const [loading, setLoading] = useState(false);
   const getAmount = async () => {
     const { error, data } = await client
-      .from("user_money")
+      .from("user_summary")
       .select("*")
       .eq("user_id", user?.id);
     if (error) throw error;
@@ -39,13 +40,23 @@ const UserProvider = ({ children }: props) => {
 
       if (error) throw error;
       const result = await getAmount();
+
       const firstItem = result[0];
-      setTodo({
-        name: user?.email || "Reload the interface",
-        tabs: data as TabData[],
-        total: firstItem.total as number,
-        pay_out: firstItem.pay_out as number,
-      });
+      if (firstItem) {
+        setTodo({
+          name: user?.email || "Reload the interface",
+          tabs: data as TabData[],
+          total: firstItem.total_user_amount as number,
+          pay_out: firstItem.total_unpaid as number,
+        });
+      } else {
+        setTodo({
+          name: user?.email || "Reload the interface",
+          tabs: data as TabData[],
+          total: 0,
+          pay_out: 0,
+        });
+      }
       notify("Tables updated", "success");
     }
     setLoading(true);
@@ -57,6 +68,26 @@ const UserProvider = ({ children }: props) => {
           name: formData.name,
           user_id: user?.id,
           amount: formData.amount,
+        });
+        if (error) {
+          notify(`${error.message}`, "error");
+          throw console.log(error.message);
+        }
+        notify("Saved item", "success");
+
+        getTabs();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  const loadMoney = async (formData: LoadMoney) => {
+    if (user) {
+      try {
+        const { error } = await client.from("user_amount").insert({
+          description: formData.name,
+          amount: formData.amount,
+          user_id: user?.id,
         });
         if (error) {
           notify(`${error.message}`, "error");
@@ -93,7 +124,7 @@ const UserProvider = ({ children }: props) => {
   }, [user]);
   return (
     <UserContext.Provider
-      value={{ todo, createData, loading, deleteData, changeState }}
+      value={{ todo, createData, loading, deleteData, changeState, loadMoney }}
     >
       {children}
     </UserContext.Provider>

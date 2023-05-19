@@ -1,9 +1,14 @@
+.h2 {
+  margin-bottom: 1em;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: space-between;
+  align-items: center;
   max-width: 480px;
+  height: 100%;
   width: auto;
   border: 1px solid green;
   padding: 1em;
@@ -14,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 1em;
   padding: .5em;
 }
 
@@ -31,4 +37,5 @@
 
 .form button {
   width: 100%;
+  cursor: pointer;
 }
