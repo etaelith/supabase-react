@@ -1,6 +1,6 @@
-// TestProvider.js
+// UserProvider.js
 import { useContext, useEffect, useReducer, useState } from "react";
-import { TestContext } from "./TestContext";
+import { UserContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import useToast from "@/hooks/useToast";
 import { useUserSummary } from "@/hooks/useUseSummary";
@@ -10,7 +10,7 @@ import { props } from "@/interfaces/interfaces";
 import { client } from "@/supabase/client";
 import { BillData, TabData } from "@/interfaces/interfacesUser";
 
-const TestProvider = ({ children }: props) => {
+const UserProvider = ({ children }: props) => {
   const [loading, setLoading] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const notify = useToast();
@@ -111,12 +111,12 @@ const TestProvider = ({ children }: props) => {
   };
 
   return (
-    <TestContext.Provider
+    <UserContext.Provider
       value={{ state, createData, deleteData, changeState, loading, loadMoney }}
     >
       {children}
-    </TestContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default TestProvider;
+export default UserProvider;

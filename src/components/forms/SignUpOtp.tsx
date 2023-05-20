@@ -10,7 +10,6 @@ const SignUpOTP = () => {
   const { signMagicClick } = useContext(AuthContext);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
     try {
       signMagicClick(formData);
     } catch (error) {

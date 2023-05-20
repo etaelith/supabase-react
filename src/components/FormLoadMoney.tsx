@@ -2,13 +2,13 @@ import { useForm } from "@/hooks/useForm";
 import { useContext } from "react";
 import styles from "@/styles/formBill.module.css";
 import { BillData } from "@/interfaces/interfacesUser";
-import { TestContext } from "@/context/TestContext";
+import { UserContext } from "@/context/UserContext";
 const FormLoadMoney = () => {
   const { formData, handleChange } = useForm<BillData>({
     name: "",
     amount: 1000,
   });
-  const { loadMoney } = useContext(TestContext);
+  const { loadMoney } = useContext(UserContext);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -16,7 +16,6 @@ const FormLoadMoney = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(formData);
   };
   return (
     <div>

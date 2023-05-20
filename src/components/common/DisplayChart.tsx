@@ -2,7 +2,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import { useContext, useEffect, useState } from "react";
 import PieChart from "./PieChart";
-import { TestContext } from "@/context/TestContext.tsx";
+import { UserContext } from "@/context/UserContext";
 
 import {
   backgroundDataSet1,
@@ -23,7 +23,7 @@ const chartTest = {
 };
 const DisplayChart = () => {
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const { state } = useContext(TestContext);
+  const { state } = useContext(UserContext);
   const { tabs, total, pay_out } = state;
   const [loading, setLoading] = useState(false);
   const [chartData, setChartData] = useState(chartTest);

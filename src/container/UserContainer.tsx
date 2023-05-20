@@ -5,9 +5,9 @@ import Item from "@/components/common/Item";
 import styles from "@/styles/userContainer.module.css";
 import DisplayChart from "@/components/common/DisplayChart";
 import FormLoadMoney from "@/components/FormLoadMoney";
-import { TestContext } from "@/context/TestContext";
+import { UserContext } from "@/context/UserContext";
 const UserContainer = () => {
-  const { state, loading } = useContext(TestContext);
+  const { state, loading } = useContext(UserContext);
   const items = state.tabs;
   const elements = items?.map((item) => <Item key={item.id} item={item} />);
   return (

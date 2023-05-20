@@ -3,11 +3,11 @@ import styles from "@/styles/item.module.css";
 import deleteIcon from "@/assets/delete.svg";
 import rotateIcon from "@/assets/rotate.svg";
 import { useContext } from "react";
-import { TestContext } from "@/context/TestContext";
+import { UserContext } from "@/context/UserContext";
 
 const Item = ({ item }: ItemsProps) => {
   const time = new Date(`${item.created_at}`).toLocaleDateString();
-  const { deleteData, changeState } = useContext(TestContext);
+  const { deleteData, changeState } = useContext(UserContext);
   return (
     <div className={styles.li}>
       <div className={styles.dates}>
