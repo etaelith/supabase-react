@@ -7,24 +7,25 @@ import NotFound from "@/pages/NotFound";
 
 import Login from "@/pages/Login";
 import SignUpForms from "@/pages/SignUpForms";
-import UserProvider from "@/context/UserProvider";
+
 import { Toaster } from "react-hot-toast";
+import TestLogin from "./pages/TestLogin";
 
 function App() {
   return (
     <>
       <Header />
-      <UserProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="user/">
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUpForms />} />
-          </Route>
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-        <Toaster />
-      </UserProvider>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="user/">
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUpForms />} />
+          <Route path="supabase" element={<TestLogin />} />
+        </Route>
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+      <Toaster />
     </>
   );
 }

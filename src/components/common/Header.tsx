@@ -9,8 +9,12 @@ const Header: React.FC = () => {
     <header>
       <DarkMode />
       {location.pathname === "/user/login" ? (
-        <Link to="/" className="btn">
-          Home
+        <Link to="/user/signup" className="btn">
+          SignUp
+        </Link>
+      ) : location.pathname === "/user/signup" ? (
+        <Link to="/user/login" className="btn">
+          LogIn
         </Link>
       ) : (
         <button onClick={signOut} className="btn">

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "@/hooks/useForm";
-import { LoginDate } from "@/interfaces/interfaces";
+import { LoginDate } from "@/interfaces/interfacesAuth";
 import { AuthContext } from "@/context/AuthContext";
 const SignIn = () => {
   const { handleChange, formData } = useForm<LoginDate>({

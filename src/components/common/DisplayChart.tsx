@@ -2,14 +2,14 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import { useContext, useEffect, useState } from "react";
 import PieChart from "./PieChart";
-import { UserContext } from "@/context/UserContext.tsx";
+import { TestContext } from "@/context/TestContext.tsx";
 
 import {
   backgroundDataSet1,
   backgroundDataSet2,
   backgroundDataSetTest,
   dataset1labels,
-} from "../../utils/data";
+} from "@/utils/data";
 import PieChartGastos from "./PieChartGastos";
 const chartTest = {
   labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
@@ -23,8 +23,8 @@ const chartTest = {
 };
 const DisplayChart = () => {
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const { todo } = useContext(UserContext);
-  const { tabs, total, pay_out } = todo;
+  const { state } = useContext(TestContext);
+  const { tabs, total, pay_out } = state;
   const [loading, setLoading] = useState(false);
   const [chartData, setChartData] = useState(chartTest);
   const [chartGastos, setChartGastos] = useState(chartTest);
@@ -60,7 +60,7 @@ const DisplayChart = () => {
     }
     setLoading(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [todo]);
+  }, [state]);
   return (
     <>
       {!loading ? (

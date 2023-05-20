@@ -1,15 +1,15 @@
 import styles from "@/styles/formBill.module.css";
 import { useForm } from "@/hooks/useForm";
 import { useContext } from "react";
-import { UserContext } from "@/context/UserContext";
-import { BillData } from "@/interfaces/interfaces";
+import { BillData } from "@/interfaces/interfacesUser";
+import { TestContext } from "@/context/TestContext";
 
 const FormBill = () => {
   const { formData, handleChange } = useForm<BillData>({
     name: null,
     amount: null,
   });
-  const { createData } = useContext(UserContext);
+  const { createData } = useContext(TestContext);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {

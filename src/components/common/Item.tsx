@@ -1,16 +1,13 @@
-import { TabData } from "@/interfaces/interfaces.ts";
+import { ItemsProps } from "@/interfaces/interfacesUser";
 import styles from "@/styles/item.module.css";
 import deleteIcon from "@/assets/delete.svg";
 import rotateIcon from "@/assets/rotate.svg";
 import { useContext } from "react";
-import { UserContext } from "@/context/UserContext.tsx";
-interface ItemsProps {
-  item: TabData;
-}
+import { TestContext } from "@/context/TestContext";
 
 const Item = ({ item }: ItemsProps) => {
   const time = new Date(`${item.created_at}`).toLocaleDateString();
-  const { deleteData, changeState } = useContext(UserContext);
+  const { deleteData, changeState } = useContext(TestContext);
   return (
     <div className={styles.li}>
       <div className={styles.dates}>

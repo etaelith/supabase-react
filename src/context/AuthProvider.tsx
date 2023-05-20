@@ -1,5 +1,6 @@
 import { AuthContext } from "./AuthContext";
-import { AuthUser, Login, LoginDate, props } from "@/interfaces/interfaces";
+import { props } from "@/interfaces/interfaces";
+import { AuthUser, Login, LoginDate } from "@/interfaces/interfacesAuth";
 import { useEffect, useState } from "react";
 import { client } from "@/supabase/client";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -49,13 +50,12 @@ const AuthProvider = ({ children }: props) => {
     if (error) {
       throw notify(error.message, "error");
     }
-
     navigate("/");
     notify("Login success", "success");
   };
   const signOut = () => {
     client.auth.signOut();
-    navigate("/user/login");
+
     notify("Success logout", "info");
   };
 
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }: props) => {
       if (!session) {
         if (location.pathname === "/") {
           setUser(INITIAL_STATE);
-          navigate("/user/login");
+          navigate("/user/supabase");
         }
       } else {
         setUser({

@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { useForm } from "@/hooks/useForm";
-import { LoginDate } from "@/interfaces/interfaces";
+import { LoginDate } from "@/interfaces/interfacesAuth";
 import { AuthContext } from "@/context/AuthContext";
+import { PASSWORD_VALID_REGEX } from "@/utils/REGEX";
 const SignUp = () => {
   const { handleChange, formData } = useForm<LoginDate>({
     email: "",
     password: "",
   });
   const { signUp } = useContext(AuthContext);
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       signUp(formData);
@@ -20,19 +21,25 @@ const SignUp = () => {
     <>
       <h3>Sign In with email and password</h3>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="test@test.com"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="123@%$123"
-          onChange={handleChange}
-          autoComplete="on"
-        />
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            onChange={handleChange}
+          />
+          <span></span>
+        </div>
+        <div>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            pattern={PASSWORD_VALID_REGEX.source}
+            onChange={handleChange}
+          />
+          <span></span>
+        </div>
         <button>Send</button>
       </form>
     </>

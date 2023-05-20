@@ -1,14 +1,14 @@
-import { UserContext } from "@/context/UserContext";
 import { useForm } from "@/hooks/useForm";
 import { useContext } from "react";
 import styles from "@/styles/formBill.module.css";
-import { LoadMoney } from "@/interfaces/interfaces";
+import { BillData } from "@/interfaces/interfacesUser";
+import { TestContext } from "@/context/TestContext";
 const FormLoadMoney = () => {
-  const { formData, handleChange } = useForm<LoadMoney>({
+  const { formData, handleChange } = useForm<BillData>({
     name: "",
     amount: 1000,
   });
-  const { loadMoney } = useContext(UserContext);
+  const { loadMoney } = useContext(TestContext);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {

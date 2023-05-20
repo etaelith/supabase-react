@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h2 className={styles.h2}>Hello {user?.email}</h2>
+        <h2 className={styles.h2}>Hello {user?.email?.replace(/@.*$/, "")}</h2>
       </div>
       <UserContainer />
     </div>
