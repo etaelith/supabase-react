@@ -12,7 +12,7 @@ const ChartAmount = () => {
   const [loading, setLoading] = useState(false);
   const [chartData, setChartData] = useState(chartTest);
   const DataAmounts = amount.map((item) => item.amount);
-  const DataLabels = amount.map((item) => item.description);
+  const DataLabels = amount.map((item) => item.name);
 
   useEffect(() => {
     setLoading(false);

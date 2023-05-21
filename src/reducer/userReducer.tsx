@@ -1,34 +1,5 @@
 // reducers/userReducer.js
-import {
-  TabData,
-  UserContextType,
-  UpdateState,
-  TabAmount,
-} from "@/interfaces/interfacesUser";
-
-type UserState = UserContextType;
-type UserAction =
-  | { type: "SET_USER_DATA"; payload: UserContextType }
-  | {
-      type: "SET_TABS";
-      payload: {
-        tabs: TabData[];
-        total: number;
-        pay_out: number;
-        amount: TabAmount[];
-      };
-    }
-  | { type: "ADD_TAB"; payload: TabData }
-  | { type: "REMOVE_TAB"; payload: number }
-  | { type: "UPDATE_TAB"; payload: UpdateState };
-
-export const INITIAL_STATE = {
-  name: "etaelith",
-  tabs: [],
-  total: 100,
-  amount: [],
-  pay_out: 0,
-};
+import { UserState, UserAction } from "@/interfaces/interfacesUser";
 
 export const userReducer = (
   state: UserState,
@@ -52,7 +23,11 @@ export const userReducer = (
         amount: action.payload.amount,
         pay_out: action.payload.pay_out,
       };
-
+    case "UPDATE_REFRESH_KEY":
+      return {
+        ...state,
+        refreshKey: action.payload,
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

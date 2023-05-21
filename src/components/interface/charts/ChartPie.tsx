@@ -12,11 +12,6 @@ const ChartPie = ({ chartData }: PieChartProps) => {
             legend: {
               display: false,
             },
-
-            title: {
-              display: true,
-              text: "Accountability user",
-            },
           },
         }}
       />

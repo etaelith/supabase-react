@@ -1,22 +1,26 @@
 import { useContext } from "react";
-import BodyTable from "./amount/BodyTable";
-import HeadTable from "./amount/HeadTable";
 import styles from "@/styles/interfaces/interface.module.css";
 import { UserContext } from "@/context/UserContext";
-import TableBodyTest from "../common/TableBodyLoading";
+
+import BodyTableLoading from "@/components/common/BodyTableLoading";
+
+import BodyTableGeneric from "@/components/common/BodyTableGeneric";
+import HeadTableGeneric from "@/components/common/HeadTableGeneric";
+
+import { headers } from "@/utils/data";
 const Amount = () => {
   const { state } = useContext(UserContext);
   return (
     <>
       <table className={styles.table}>
-        <HeadTable />
+        <HeadTableGeneric headers={headers[0]} />
         <tbody>
           {state.amount.length > 0 ? (
             state.amount.map((item, index) => (
-              <BodyTable key={index} item={item} />
+              <BodyTableGeneric key={index} item={item} />
             ))
           ) : (
-            <TableBodyTest cantidad={3} />
+            <BodyTableLoading cantidad={3} />
           )}
         </tbody>
       </table>
