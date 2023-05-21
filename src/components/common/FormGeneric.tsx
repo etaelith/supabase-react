@@ -1,32 +1,29 @@
-import styles from "@/styles/interfaces/FormBill.module.css";
 import { useForm } from "@/hooks/useForm";
-import { useContext } from "react";
-import { BillData } from "@/interfaces/interfacesUser";
-import { UserContext } from "@/context/UserContext";
+import { BillData, FormAction } from "@/interfaces/interfacesUser";
+import styles from "@/styles/interfaces/formBill.module.css";
 
-const FormBill = () => {
+const FormGeneric = ({ formAction, name, disclaimer }: FormAction) => {
   const { formData, handleChange } = useForm<BillData>({
     name: "",
     amount: 50,
   });
-  const { createData } = useContext(UserContext);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await createData(formData);
+      await formAction(formData);
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <div className={styles.div}>
-      <h2>Input payout</h2>
+      <h2>{name}</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input}>
-          <label>Name:</label>
-          <input type="text" name="name" onChange={handleChange} />
+          <label>From:</label>
+          <input type="text" name="name" onChange={handleChange}></input>
         </div>
+
         <div className={styles.input}>
           <label>Amount:</label>
           <input
@@ -34,11 +31,11 @@ const FormBill = () => {
             name="amount"
             step="0.01"
             onChange={handleChange}
-          />
+          ></input>
         </div>
         <div className={styles.inputCheck}>
-          <label>Payed:</label>
-          <h4> Default in false</h4>
+          <label>{disclaimer.label}</label>
+          <h4>{disclaimer.h4}</h4>
         </div>
         <button>Submit</button>
       </form>
@@ -46,4 +43,4 @@ const FormBill = () => {
   );
 };
 
-export default FormBill;
+export default FormGeneric;

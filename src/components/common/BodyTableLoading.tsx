@@ -1,8 +1,7 @@
 import deleteButton from "@/assets/delete.svg";
-type Amount = {
-  cantidad: number;
-};
-const TableBodyTest = ({ cantidad }: Amount) => {
+import { Amount } from "@/interfaces/interfacesUser";
+
+const BodyTableLoading = ({ cantidad }: Amount) => {
   const tds = [];
 
   for (let i = 0; i < cantidad; i++) {
@@ -21,4 +20,4 @@ const TableBodyTest = ({ cantidad }: Amount) => {
   );
 };
 
-export default TableBodyTest;
+export default BodyTableLoading;

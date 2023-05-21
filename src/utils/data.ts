@@ -35,3 +35,21 @@ export const chartTest = {
     },
   ],
 };
+export const names = ["Input payout", "Charge Money"];
+export const disclaimer = [
+  { label: "Payed:", h4: "Default in false" },
+  { label: "Disclaimer:", h4: "Can't change or delete" },
+];
+
+export const headers = [
+  ["Name", "Date", "Amount", "Delete"],
+  ["Name", "Date", "Payed", "Amount", "Delete"],
+];
+export const INITIAL_STATE = {
+  name: "etaelith",
+  tabs: [],
+  total: 100,
+  amount: [],
+  pay_out: 0,
+  refreshKey: 0,
+};

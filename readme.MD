@@ -44,6 +44,7 @@ create table
     user_id uuid not null,
     amount numeric not null,
     constraint Bill_pkey primary key (id)
+    constraint non_empty_string check ((name <> ''::text))
   ) tablespace pg_default;
 
 create trigger trigger_update_user_summary_bill
@@ -112,8 +113,9 @@ create table
     created_at timestamp with time zone null default now(),
     user_id uuid not null,
     amount numeric not null,
-    description text null,
+    name text null,
     constraint user_amount_pkey primary key (id)
+    constraint non_empty_string check ((name <> ''::text))
   ) tablespace pg_default;
 
 create trigger trigger_update_user_summary_user_amount
@@ -124,10 +126,10 @@ update on user_amount for each row
 execute function update_user_summary ();
 ```
 
-| id     | created_at                   | amount    | description | user_id                              |
-| ------ | ---------------------------- | --------- | ----------- | ------------------------------------ |
-| `int8` | `now()`                      | `numeric` | `text`      | `uuid()`                             |
-| 2      | 2023-05-17 21:07:30.96618+00 | 25.50     | 0           | 9311e255-4a5b-4222-b0b4-36547a2b0bf9 |
+| id     | created_at                   | amount    | name   | user_id                              |
+| ------ | ---------------------------- | --------- | ------ | ------------------------------------ |
+| `int8` | `now()`                      | `numeric` | `text` | `uuid()`                             |
+| 2      | 2023-05-17 21:07:30.96618+00 | 25.50     | 0      | 9311e255-4a5b-4222-b0b4-36547a2b0bf9 |
 
 ###### Please note that this description is based on the provided table structure, and you may have additional columns or constraints in your actual implementation. Feel free to customize the description to fit your specific use case.
 
