@@ -59,28 +59,29 @@ const AuthProvider = ({ children }: props) => {
     notify("Success logout", "info");
   };
 
-  useEffect(
-    () => {
-      client.auth.onAuthStateChange((_event, session) => {
-        if (!session) {
-          if (location.pathname === "/") {
-            setUser(INITIAL_STATE);
-            navigate("/user/supabase");
-          }
-        } else {
-          setUser({
-            user: session.user,
-            session: session,
-          });
-          /*     navigate("/"); */
+  useEffect(() => {
+    client.auth.onAuthStateChange((_event, session) => {
+      const currentPath = location.pathname;
+
+      if (!session) {
+        setUser(INITIAL_STATE);
+        navigate("/user/supabase");
+      } else {
+        setUser({
+          user: session.user,
+          session: session,
+        });
+        if (
+          currentPath !== "/menu" &&
+          currentPath !== "/bills" &&
+          currentPath !== "/amount"
+        ) {
+          navigate("/menu");
         }
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
-    [
-      /* navigate comentado */
-    ]
-  );
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
   return (
     <AuthContext.Provider
       value={{

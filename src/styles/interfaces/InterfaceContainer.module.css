@@ -1,5 +1,6 @@
-.main {
+.header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -98,6 +99,16 @@
   opacity: 0.8;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  border-top: 5px solid var(--secondary);
+  padding-top: 1em;
+}
+
 @media (min-width:330px) {
   .container {
     height: 40vh;
@@ -114,4 +125,11 @@
     border-radius: 50px;
   }
 
+}
+
+@media (min-width: 950px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }

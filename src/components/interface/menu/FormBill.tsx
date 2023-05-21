@@ -1,4 +1,4 @@
-import styles from "@/styles/formBill.module.css";
+import styles from "@/styles/interfaces/FormBill.module.css";
 import { useForm } from "@/hooks/useForm";
 import { useContext } from "react";
 import { BillData } from "@/interfaces/interfacesUser";
@@ -20,8 +20,8 @@ const FormBill = () => {
   };
 
   return (
-    <div>
-      <h2 className={styles.h2}>Input payout</h2>
+    <div className={styles.div}>
+      <h2>Input payout</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input}>
           <label>Name:</label>

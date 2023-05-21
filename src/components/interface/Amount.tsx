@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import BodyTable from "./amount/BodyTable";
 import HeadTable from "./amount/HeadTable";
-import styles from "@/styles/interface.module.css";
+import styles from "@/styles/interfaces/interface.module.css";
 import { UserContext } from "@/context/UserContext";
 import TableBodyTest from "../common/TableBodyLoading";
 const Amount = () => {

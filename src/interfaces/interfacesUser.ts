@@ -7,8 +7,8 @@ export interface TabData extends BillData {
   user_id: string;
 }
 export interface BillData {
-  name: string | null;
-  amount: number | null;
+  name: string;
+  amount: number;
 }
 export interface TabAmount {
   id: number;

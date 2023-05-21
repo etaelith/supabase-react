@@ -1,0 +1,42 @@
+.div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  max-width: 420px;
+  padding: 1em;
+  border-width: 5px;
+  border-radius: 50px;
+  border-color: var(--secondary);
+  border-style: solid none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1em;
+  width: 100%;
+  padding: 1em;
+}
+
+.form button {
+  background-color: var(--secondary);
+  border: 2px solid var(--secondary);
+  border-radius: 50px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (min-width: 340px) {
+  .input {
+    flex-direction: row;
+  }
+}

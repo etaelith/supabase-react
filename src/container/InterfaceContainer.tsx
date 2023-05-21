@@ -1,9 +1,10 @@
-import styles from "@/styles/InterfaceContainer.module.css";
+import styles from "@/styles/interfaces/InterfaceContainer.module.css";
 import bill from "@/assets/bill-dollar.svg";
 import wallet from "@/assets/wallet-money.svg";
 import menu from "@/assets/menu.svg";
 import cursorup from "@/assets/cursorup.svg";
 import { Outlet, NavLink } from "react-router-dom";
+import ChartContainer from "@/components/interface/charts/ChartContainer";
 const InterfaceContainer = () => {
   const handleSmooth = () => {
     const amountContainer = document.getElementById("amount");
@@ -19,7 +20,7 @@ const InterfaceContainer = () => {
 
   return (
     <div>
-      <header className={styles.main}>
+      <header className={styles.header}>
         <div className={styles.container}>
           <NavLink to="bills" className={styles.div} onClick={handleSmooth}>
             <h4>Bills</h4>
@@ -41,8 +42,10 @@ const InterfaceContainer = () => {
             </div>
           </NavLink>
         </div>
+        <ChartContainer />
       </header>
-      <main id="amount" style={{ height: "100vh" }}>
+
+      <main id="amount" className={styles.main}>
         <Outlet />
 
         <img

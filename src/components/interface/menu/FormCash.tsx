@@ -1,44 +1,49 @@
-import styles from "@/styles/formBill.module.css";
 import { useForm } from "@/hooks/useForm";
 import { useContext } from "react";
+import styles from "@/styles/interfaces/FormBill.module.css";
 import { BillData } from "@/interfaces/interfacesUser";
 import { UserContext } from "@/context/UserContext";
-
-const FormBill = () => {
+const FormCash = () => {
   const { formData, handleChange } = useForm<BillData>({
     name: "",
-    amount: 50,
+    amount: 1000,
   });
-  const { createData } = useContext(UserContext);
+  const { loadMoney } = useContext(UserContext);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await createData(formData);
+      await loadMoney(formData);
     } catch (error) {
       console.log(error);
     }
   };
-
+  const { amount, name } = formData;
   return (
-    <div>
-      <h2 className={styles.h2}>Input payout</h2>
+    <div className={styles.div}>
+      <h2>Charge Money</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input}>
-          <label>Name:</label>
-          <input type="text" name="name" onChange={handleChange} />
+          <label>From:</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Name"
+            onChange={handleChange}
+          ></input>
         </div>
         <div className={styles.input}>
           <label>Amount:</label>
           <input
             type="number"
             name="amount"
-            step="0.01"
+            value={amount}
             onChange={handleChange}
-          />
+          ></input>
         </div>
         <div className={styles.inputCheck}>
-          <label>Payed:</label>
-          <h4> Default in false</h4>
+          <label>Disclaimer:</label>
+          <h4> Can't change or delete</h4>
         </div>
         <button>Submit</button>
       </form>
@@ -46,4 +51,4 @@ const FormBill = () => {
   );
 };
 
-export default FormBill;
+export default FormCash;
