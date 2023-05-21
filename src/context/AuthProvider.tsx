@@ -61,17 +61,23 @@ const AuthProvider = ({ children }: props) => {
 
   useEffect(() => {
     client.auth.onAuthStateChange((_event, session) => {
+      const currentPath = location.pathname;
+
       if (!session) {
-        if (location.pathname === "/") {
-          setUser(INITIAL_STATE);
-          navigate("/user/supabase");
-        }
+        setUser(INITIAL_STATE);
+        navigate("/user/supabase");
       } else {
         setUser({
           user: session.user,
           session: session,
         });
-        navigate("/");
+        if (
+          currentPath !== "/menu" &&
+          currentPath !== "/bills" &&
+          currentPath !== "/amount"
+        ) {
+          navigate("/menu");
+        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

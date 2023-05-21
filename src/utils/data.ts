@@ -25,3 +25,13 @@ export const backgroundDataSet3 = [
   "rgba(153, 102, 255, 0.2)",
   "rgba(255, 159, 64, 0.2)",
 ];
+export const chartTest = {
+  labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: [1, 5, 43, 25, 9],
+      backgroundColor: backgroundDataSetTest,
+    },
+  ],
+};

@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  border: 1px solid green;
+  border-radius: 50px;
 }
 
 .dates {
@@ -10,21 +12,20 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 70%;
   align-items: center;
+  margin-left: 1em;
 }
-
-
 
 .divimg {
   display: flex;
+  justify-content: space-evenly;
+  width: 25%;
+  padding-right: .25em;
 }
 
 .img {
-  width: 25px;
+  width: 20px;
   height: auto;
   cursor: pointer;
-  border: 1px solid red;
-  border-radius: 100%;
-  margin: 1.5em;
 }
 
 .img:hover {

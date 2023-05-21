@@ -1,22 +1,15 @@
 import { useContext } from "react";
 import DarkMode from "./DarkMode";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AuthContext } from "@/context/AuthContext";
+import styles from "@/styles/header.module.css";
 const Header: React.FC = () => {
   const { signOut } = useContext(AuthContext);
   const location = useLocation();
   return (
-    <header>
+    <header className={styles.header}>
       <DarkMode />
-      {location.pathname === "/user/login" ? (
-        <Link to="/user/signup" className="btn">
-          SignUp
-        </Link>
-      ) : location.pathname === "/user/signup" ? (
-        <Link to="/user/login" className="btn">
-          LogIn
-        </Link>
-      ) : (
+      {location.pathname !== "/user/supabase" && (
         <button onClick={signOut} className="btn">
           Log Out
         </button>
