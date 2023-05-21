@@ -5,7 +5,11 @@ import menu from "@/assets/menu.svg";
 import cursorup from "@/assets/cursorup.svg";
 import { Outlet, NavLink } from "react-router-dom";
 import ChartContainer from "@/components/interface/charts/ChartContainer";
+import { useContext } from "react";
+import { UserContext } from "@/context/UserContext";
 const InterfaceContainer = () => {
+  const { state } = useContext(UserContext);
+  const { total, pay_out } = state;
   const handleSmooth = () => {
     const amountContainer = document.getElementById("amount");
 
@@ -37,7 +41,7 @@ const InterfaceContainer = () => {
           >
             <h4>Amount</h4>
             <div>
-              <h3>$ 42.852,23</h3>
+              <h3>$ {total - pay_out}</h3>
               <img src={wallet}></img>
             </div>
           </NavLink>
