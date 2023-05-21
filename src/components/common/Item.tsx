@@ -1,15 +1,35 @@
-import { ItemsProps } from "@/interfaces/interfacesUser";
+import { TabData } from "@/interfaces/interfacesUser";
 import styles from "@/styles/item.module.css";
 import deleteIcon from "@/assets/delete.svg";
-import rotateIcon from "@/assets/rotate.svg";
+
 import { useContext } from "react";
 import { UserContext } from "@/context/UserContext";
-
+type ItemsProps = {
+  item: TabData;
+};
 const Item = ({ item }: ItemsProps) => {
   const time = new Date(`${item.created_at}`).toLocaleDateString();
-  const { deleteData, changeState } = useContext(UserContext);
+  const { deleteData } = useContext(UserContext);
   return (
-    <div className={styles.li}>
+    <tr>
+      <td>{item.name}</td>
+      <td>{item.amount}</td>
+      <td>{time}</td>
+      <td>{String(item.paid_up)} </td>
+      <td>
+        {" "}
+        <img
+          className={styles.img}
+          src={deleteIcon}
+          onClick={() => deleteData(item.id)}
+        />
+      </td>
+    </tr>
+  );
+};
+
+export default Item;
+/* <div className={styles.li}>
       <div className={styles.dates}>
         <span>{item.name}</span>
         <span>{item.amount}</span>
@@ -28,8 +48,4 @@ const Item = ({ item }: ItemsProps) => {
           onClick={() => deleteData(item.id)}
         />
       </div>
-    </div>
-  );
-};
-
-export default Item;
+    </div> */

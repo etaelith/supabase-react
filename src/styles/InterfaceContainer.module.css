@@ -1,0 +1,117 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--principal);
+  height: 45vh;
+  padding: 1em;
+  gap: 15px;
+}
+
+.container>* {
+  border-radius: 50px;
+  border: 3px solid var(--secondary);
+  box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+  color: var(--font-secondary);
+  text-decoration: none;
+}
+
+.div:hover {
+  background-color: var(--secondary);
+  transform: scale(0.9);
+  color: var(--font)
+}
+
+.div>h4 {
+
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.2em;
+
+}
+
+.div>img {
+  width: 70px;
+}
+
+.bigdiv {
+  grid-column: span 2;
+
+}
+
+.bigdiv>div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 1em 1em 1em;
+}
+
+.bigdiv>div>h3 {
+  font-size: 1.5em;
+  color: var(--button);
+}
+
+.bigdiv>div>h3:hover {
+  color: var(--principal)
+}
+
+.bigdiv>div>img {
+  width: 70px;
+}
+
+.scrollbutton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 50px;
+  height: 50px;
+}
+
+.scrollbutton:hover {
+  opacity: 0.8;
+}
+
+@media (min-width:330px) {
+  .container {
+    height: 40vh;
+  }
+
+  .bigdiv>div>h3 {
+    font-size: 2em;
+  }
+
+}
+
+@media (min-width:420px) {
+  .container {
+    border-radius: 50px;
+  }
+
+}

@@ -59,23 +59,28 @@ const AuthProvider = ({ children }: props) => {
     notify("Success logout", "info");
   };
 
-  useEffect(() => {
-    client.auth.onAuthStateChange((_event, session) => {
-      if (!session) {
-        if (location.pathname === "/") {
-          setUser(INITIAL_STATE);
-          navigate("/user/supabase");
+  useEffect(
+    () => {
+      client.auth.onAuthStateChange((_event, session) => {
+        if (!session) {
+          if (location.pathname === "/") {
+            setUser(INITIAL_STATE);
+            navigate("/user/supabase");
+          }
+        } else {
+          setUser({
+            user: session.user,
+            session: session,
+          });
+          /*     navigate("/"); */
         }
-      } else {
-        setUser({
-          user: session.user,
-          session: session,
-        });
-        navigate("/");
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate]);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [
+      /* navigate comentado */
+    ]
+  );
   return (
     <AuthContext.Provider
       value={{

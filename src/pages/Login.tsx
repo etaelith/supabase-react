@@ -1,5 +1,5 @@
 import AuthContainer from "@/container/AuthContainer";
-import SignIn from "@/components/forms/SignIn";
+import SignIn from "@/components/forms-auth/SignIn";
 const Login = () => {
   return (
     <div

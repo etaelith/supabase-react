@@ -8,7 +8,8 @@ import { useTabs } from "@/hooks/useTabs";
 import { INITIAL_STATE, userReducer } from "@/reducer/userReducer";
 import { props } from "@/interfaces/interfaces";
 import { client } from "@/supabase/client";
-import { BillData, TabData } from "@/interfaces/interfacesUser";
+import { BillData, TabAmount, TabData } from "@/interfaces/interfacesUser";
+import useAmount from "@/hooks/useAmount";
 
 const UserProvider = ({ children }: props) => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const UserProvider = ({ children }: props) => {
   const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
   const userSummary = useUserSummary(user?.id as string, refreshKey);
   const tabs = useTabs(user?.id as string, refreshKey);
-
+  const amount = useAmount(user?.id as string, refreshKey);
   useEffect(() => {
     setLoading(false);
     if (user) {
@@ -27,6 +28,7 @@ const UserProvider = ({ children }: props) => {
         payload: {
           name: user?.email || "Reload the interface",
           tabs: tabs as TabData[],
+          amount: amount as TabAmount[],
           total: userSummary?.total_user_amount || INITIAL_STATE.total,
           pay_out: userSummary?.total_unpaid || INITIAL_STATE.pay_out,
         },
@@ -43,12 +45,13 @@ const UserProvider = ({ children }: props) => {
         payload: {
           tabs: tabs as TabData[],
           total: userSummary?.total_user_amount || INITIAL_STATE.total,
+          amount: amount as TabAmount[],
           pay_out: userSummary?.total_unpaid || INITIAL_STATE.pay_out,
         },
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabs, userSummary]);
+  }, [tabs, userSummary, amount]);
   const createData = async (formData: BillData) => {
     try {
       const { error } = await client.from("bill").insert({

@@ -1,10 +1,5 @@
 import type { ChartData } from "chart.js";
-export interface UserContextType {
-  name: string;
-  tabs: TabData[] | null;
-  total: number;
-  pay_out: number;
-}
+
 export interface TabData extends BillData {
   created_at: string;
   paid_up: boolean;
@@ -15,10 +10,18 @@ export interface BillData {
   name: string | null;
   amount: number | null;
 }
+export interface TabAmount {
+  id: number;
+  created_at: string;
+  user_id: string;
+  amount: number;
+  description: string;
+}
 export interface UserContextType {
   name: string;
-  tabs: TabData[] | null;
+  tabs: TabData[] | [];
   total: number;
+  amount: TabAmount[] | [];
   pay_out: number;
 }
 export type UserContextProps = {
@@ -37,7 +40,7 @@ export interface PieChartProps {
   chartData: ChartData<"doughnut">;
 }
 export interface ItemsProps {
-  item: TabData;
+  item: TabData | TabAmount;
 }
 export interface UserSummary {
   total_user_amount: number;
