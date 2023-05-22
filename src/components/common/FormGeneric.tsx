@@ -1,6 +1,6 @@
 import { useForm } from "@/hooks/useForm";
 import { BillData, FormAction } from "@/interfaces/interfacesUser";
-import styles from "@/styles/interfaces/formBill.module.css";
+import styles from "@/styles/interfaces/FormBill.module.css";
 
 const FormGeneric = ({ formAction, name, disclaimer }: FormAction) => {
   const { formData, handleChange } = useForm<BillData>({
