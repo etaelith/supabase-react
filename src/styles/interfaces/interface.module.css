@@ -2,7 +2,7 @@
 .table {
   width: 100%;
   max-width: 500px;
-  border: .5em solid var(--secondary);
+  border: .5em solid var(--border);
   border-radius: 50px;
   overflow: auto;
   padding: .5px;
@@ -21,9 +21,7 @@
 }
 
 .table>tbody>tr>td {
-  color: var(--button);
-  border-bottom: 2px solid rgba(var(--button), 0.4);
-
+  border-bottom: 2px solid rgba(var(--border-td), 0.4);
 }
 
 .table>tbody>tr:last-child>td {
@@ -33,6 +31,7 @@
 .table>tbody>tr>td>img {
   width: 1.5em;
   height: auto;
+  cursor: pointer;
 }
 
 /* Menu */

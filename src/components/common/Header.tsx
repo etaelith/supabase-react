@@ -9,8 +9,8 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <DarkMode />
-      {location.pathname !== "/user/supabase" && (
-        <button onClick={signOut} className="btn">
+      {location.pathname !== "/user/" && (
+        <button onClick={signOut} className={styles.btn}>
           Log Out
         </button>
       )}
