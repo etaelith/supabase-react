@@ -9,7 +9,7 @@
   padding: 1em;
   border-width: 5px;
   border-radius: 50px;
-  border-color: var(--secondary);
+  border-color: var(--border);
   border-style: solid none;
 }
 
@@ -24,7 +24,7 @@
 
 .form button {
   background-color: var(--secondary);
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--border);
   border-radius: 50px;
 }
 

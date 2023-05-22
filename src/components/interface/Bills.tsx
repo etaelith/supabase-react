@@ -15,7 +15,11 @@ const Bills = () => {
         <tbody>
           {state.tabs.length > 0 ? (
             state.tabs.map((item, index) => (
-              <BodyTableGeneric item={item} key={index} />
+              <BodyTableGeneric
+                item={item}
+                key={index}
+                table={{ table: "bill" }}
+              />
             ))
           ) : (
             <BodyTableLoading cantidad={4} />

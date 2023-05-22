@@ -8,7 +8,12 @@ import { useTabs } from "@/hooks/useTabs";
 import { userReducer } from "@/reducer/userReducer";
 import { props } from "@/interfaces/interfaces";
 import { client } from "@/supabase/client";
-import { BillData, TabAmount, TabData } from "@/interfaces/interfacesUser";
+import {
+  BillData,
+  TabAmount,
+  TabData,
+  Table,
+} from "@/interfaces/interfacesUser";
 import useAmount from "@/hooks/useAmount";
 import { INITIAL_STATE } from "@/utils/data";
 
@@ -64,8 +69,9 @@ const UserProvider = ({ children }: props) => {
       }
     }
   };
-  const deleteData = async (id: number) => {
-    const { error } = await client.from("bill").delete().eq("id", id);
+  const deleteData = async (id: number, table: Table) => {
+    const tableName = table.table;
+    const { error } = await client.from(tableName).delete().eq("id", id);
     if (error) {
       notify(`${error.message}`, "error");
     } else {

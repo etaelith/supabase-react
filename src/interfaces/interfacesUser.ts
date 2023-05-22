@@ -25,13 +25,16 @@ export interface UserContextType {
   pay_out: number;
   refreshKey: number;
 }
+export interface Table {
+  table: "bill" | "user_amount";
+}
 export type UserContextProps = {
   state: UserContextType;
   loading: boolean;
   createData: (todo: BillData) => void;
   loadMoney: (todo: BillData) => void;
   changeState: (id: number, paid_up: boolean) => void;
-  deleteData: (todo: number) => void;
+  deleteData: (id: number, table: Table) => void;
 };
 
 export interface PieChartProps {
@@ -53,6 +56,7 @@ export type HeadTableProps = {
 };
 export type BodyProps = {
   item: TabData | TabAmount;
+  table: Table;
 };
 export type Amount = {
   cantidad: number;

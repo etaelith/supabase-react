@@ -17,7 +17,11 @@ const Amount = () => {
         <tbody>
           {state.amount.length > 0 ? (
             state.amount.map((item, index) => (
-              <BodyTableGeneric key={index} item={item} />
+              <BodyTableGeneric
+                key={index}
+                item={item}
+                table={{ table: "user_amount" }}
+              />
             ))
           ) : (
             <BodyTableLoading cantidad={3} />

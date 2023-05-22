@@ -5,27 +5,20 @@
 }
 
 :root {
-  --principal: rgb(13, 68, 59);
-  --secondary: rgb(30, 158, 104);
-  --third: rgb(136, 212, 152);
-  --font: rgb(36, 36, 36);
-  --font-secondary: rgb(191, 191, 191);
-  --button: 54, 215, 183;
+  color-scheme: light dark;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--principal);
-
-
 }
 
 th {
   padding-bottom: 1.25em;
   border-bottom: 4px solid var(--secondary);
 }
+
 
 @media (min-width: 720px) {
   th {
